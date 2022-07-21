@@ -12,13 +12,10 @@ export class AppService {
 
   getStatsRange(rangeItem) {
     var filteredList = [];
-
-    let localeStartDate = rangeItem.startDate.split('T');
-    let dateStartArr = localeStartDate[0].split('-');
+    let dateStartArr = rangeItem.startDate.split('-');
     let formattedStartDate = new Date(parseInt(dateStartArr[0]), parseInt(dateStartArr[1]) - 1, parseInt(dateStartArr[2]) + 1);
 
-    let localeEndDate = rangeItem.endDate.split('T');
-    let dateEndArr = localeEndDate[0].split('-');
+    let dateEndArr = rangeItem.endDate.split('-');
     let formattedEndDate = new Date(parseInt(dateEndArr[0]), parseInt(dateEndArr[1]) - 1, parseInt(dateEndArr[2]) + 1);
 
     this.statsList.forEach(stat => {
