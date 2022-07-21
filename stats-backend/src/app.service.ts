@@ -28,8 +28,6 @@ export class AppService {
   setStats(data: CreateStatRequest) {
     console.log('setStats - Setting statistics for ', data);
 
-    // let dateArr = data.date.split('-');
-    // let formattedDate = new Date(parseInt(dateArr[0]), parseInt(dateArr[1]) - 1, parseInt(dateArr[2]) + 1);
     let formattedDate = new Date(data.date).toLocaleDateString('en-CA');
 
     if (formattedDate == data.date.toString()) {

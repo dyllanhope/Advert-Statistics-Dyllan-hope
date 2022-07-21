@@ -11,25 +11,31 @@ export class AppService {
 
   getStatsRange(rangeItem) {
     var filteredList = [];
-    let dateStartArr = rangeItem.startDate.split('-');
-    let formattedStartDate = new Date(parseInt(dateStartArr[0]), parseInt(dateStartArr[1]) - 1, parseInt(dateStartArr[2]) + 1);
+    if (Object.keys(rangeItem).length !== 0) {
+      if (rangeItem.startDate && rangeItem.endDate) {
+        let dateStartArr = rangeItem.startDate.split('-');
+        let formattedStartDate = new Date(parseInt(dateStartArr[0]), parseInt(dateStartArr[1]) - 1, parseInt(dateStartArr[2]) + 1);
 
-    let dateEndArr = rangeItem.endDate.split('-');
-    let formattedEndDate = new Date(parseInt(dateEndArr[0]), parseInt(dateEndArr[1]) - 1, parseInt(dateEndArr[2]) + 1);
+        let dateEndArr = rangeItem.endDate.split('-');
+        let formattedEndDate = new Date(parseInt(dateEndArr[0]), parseInt(dateEndArr[1]) - 1, parseInt(dateEndArr[2]) + 1);
 
-    this.statsList.forEach(stat => {
-      if (formattedEndDate >= stat.date && formattedStartDate <= stat.date) {
-        filteredList.push(stat);
+        this.statsList.forEach(stat => {
+          if (formattedEndDate >= stat.date && formattedStartDate <= stat.date) {
+            filteredList.push(stat);
+          }
+        });
       }
-    });
+    }
 
     return filteredList;
   }
 
   setStats(data) {
-    data.id = uuidv4();
-    data.date = new Date(data.date);
-    this.statsList.push(data);
+    if (Object.keys(data).length !== 0) {
+      data.id = uuidv4();
+      data.date = new Date(data.date);
+      this.statsList.push(data);
+    }
   }
 
   clearStats() {
