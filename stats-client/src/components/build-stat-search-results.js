@@ -40,7 +40,7 @@ export default function BuildResults(props) {
                     alignItems="center"
                     justifyContent="center"
                 >
-                    <TableContainer component={Paper}>
+                    <TableContainer elevation={3} component={Paper}>
                         <Table aria-label="collapsible table">
                             <TableHead>
                                 <TableRow>

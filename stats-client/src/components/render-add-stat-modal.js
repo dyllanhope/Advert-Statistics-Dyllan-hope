@@ -8,6 +8,7 @@ import Modal from '@mui/material/Modal';
 import { FormControl, TextField } from '@mui/material';
 import DatePicker from './render-date-picker';
 import { StatAPI } from '../api/stats.api';
+import InputAdornment from '@mui/material/InputAdornment';
 
 export default function AddStatModal(props) {
     const { showModal, handleClose, refreshData } = props;
@@ -22,7 +23,8 @@ export default function AddStatModal(props) {
     }
 
     const handleCreateButton = async () => {
-        let dataModel = { date: selectedDate, views: Views, clicks: Clicks, cost: Cost };
+        let localeStartDate = new Date(selectedDate).toLocaleDateString('en-CA');
+        let dataModel = { date: localeStartDate, views: Views, clicks: Clicks, cost: Cost };
         await StatAPI.addStats(dataModel);
         refreshData();
         handleClose();
@@ -61,7 +63,7 @@ export default function AddStatModal(props) {
                         <TextField InputProps={{ inputProps: { min: 1 } }} type="number" label="Clicks" value={Clicks} onChange={(e) => { setClicks(e.target.value) }} placeholder='0' variant='filled' />
                     </FormControl>
                     <FormControl fullWidth >
-                        <TextField InputProps={{ inputProps: { min: 1 } }} type="number" label="Cost" value={Cost} onChange={(e) => { setCost(e.target.value) }} placeholder='0' variant='filled' />
+                        <TextField InputProps={{startAdornment: <InputAdornment position="start">£</InputAdornment>, inputProps: { min: 1 }  }} type="currency" label="Cost" value={Cost} onChange={(e) => { setCost(e.target.value) }} placeholder='0' variant='filled' />
                     </FormControl>
                 </div>
                 <br />

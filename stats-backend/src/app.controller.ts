@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, HttpStatus, Param, Post } from '@nestjs/common';
+import { RpcException } from '@nestjs/microservices';
 import { AppService } from './app.service';
 import { CreateStatRequest } from './Dto/create-stat-request';
 
@@ -18,7 +19,11 @@ export class AppController {
 
   @Post('statistics')
   setStats(@Body() createStatRequest: CreateStatRequest) {
-    return this.appService.setStats(createStatRequest);
+    try {
+      return this.appService.setStats(createStatRequest);
+    } catch (error) {
+      throw new HttpException(error.message, HttpStatus.PRECONDITION_FAILED);
+    }
   }
 
   @Post('statistics/clear')

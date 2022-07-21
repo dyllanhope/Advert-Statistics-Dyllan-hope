@@ -15,8 +15,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 export default function RenderStatistics() {
     const [stats, setStats] = useState([]);
-    const [startDate, setStartDate] = useState(new Date());
-    const [endDate, setEndDate] = useState(new Date());
+    const [startDate, setStartDate] = useState(new Date('1900-01-01'));
+    const [endDate, setEndDate] = useState(new Date('2099-12-31'));
     const [showAddModal, setShowAddModal] = useState(false);
 
 

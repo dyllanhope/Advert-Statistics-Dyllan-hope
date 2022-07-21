@@ -15,6 +15,10 @@ export default function Row(props) {
     const { stats } = props;
     const [open, setOpen] = React.useState(false);
 
+    function currencyFormat(num) {
+        return `£${num.toFixed(2)}`;
+      }
+
     return (
         <React.Fragment>
             <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
@@ -29,7 +33,7 @@ export default function Row(props) {
                     </IconButton>
                 </TableCell>
                 <TableCell align='left' component="th" scope="row">
-                    {stats.date}
+                    {new Date(stats.date).toLocaleDateString('en-CA')}
                 </TableCell>
             </TableRow>
             <TableRow>
@@ -37,7 +41,7 @@ export default function Row(props) {
                     <Collapse in={open} timeout="auto" unmountOnExit>
                         <Box sx={{ margin: 1 }}>
                             <Typography variant="h6" gutterBottom component="div">
-                                Statistics
+                                Statistics for {new Date(stats.date).toLocaleDateString('en-CA')}
                             </Typography>
                             <Table size="small" aria-label="purchases">
                                 <TableHead>
@@ -54,9 +58,9 @@ export default function Row(props) {
                                     <TableRow key={stats.id}>
                                         <TableCell component="th" scope="row">{stats.views}</TableCell>
                                         <TableCell>{stats.clicks}</TableCell>
-                                        <TableCell>{stats.cost}</TableCell>
-                                        <TableCell align="right">{Math.round(stats.cost / stats.clicks * 100) / 100}</TableCell>
-                                        <TableCell align="right">{Math.round((stats.cost / stats.views * 1000) * 100) / 100}</TableCell>
+                                        <TableCell>{currencyFormat(parseInt(stats.cost))}</TableCell>
+                                        <TableCell align="right">{currencyFormat((stats.cost / stats.clicks * 100) / 100)}</TableCell>
+                                        <TableCell align="right">{currencyFormat(((stats.cost / stats.views * 1000) * 100) / 100)}</TableCell>
                                     </TableRow>
                                 </TableBody>
                             </Table>

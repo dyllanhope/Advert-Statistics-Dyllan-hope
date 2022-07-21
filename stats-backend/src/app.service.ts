@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { ClientProxy } from '@nestjs/microservices';
+import { ClientProxy, RpcException } from '@nestjs/microservices';
 import { CreateStatRequest } from './Dto/create-stat-request';
 import { CreateStatEvent } from './Event/create-stat-event';
 
@@ -14,10 +14,10 @@ export class AppService {
   }
 
   getStatsRange(startDate, endDate) {
-    
+
     let localeStartDate = new Date(startDate).toLocaleDateString('en-CA');
     let localeEndDate = new Date(endDate).toLocaleDateString('en-CA');
-    
+
     let rangeItem = { startDate: localeStartDate, endDate: localeEndDate };
 
     console.log('getStatsRange - fetching all stats between a range:', rangeItem);
@@ -28,13 +28,18 @@ export class AppService {
   setStats(data: CreateStatRequest) {
     console.log('setStats - Setting statistics for ', data);
 
-    let dateArr = data.date.split('-');
-    let formattedDate = new Date(parseInt(dateArr[0]), parseInt(dateArr[1]) - 1, parseInt(dateArr[2]) + 1);
+    // let dateArr = data.date.split('-');
+    // let formattedDate = new Date(parseInt(dateArr[0]), parseInt(dateArr[1]) - 1, parseInt(dateArr[2]) + 1);
+    let formattedDate = new Date(data.date).toLocaleDateString('en-CA');
 
-    this.statisticsClient.emit(
-      'create_stat',
-      new CreateStatEvent(formattedDate, data.views, data.clicks, data.cost)
-    );
+    if (formattedDate == data.date.toString()) {
+      this.statisticsClient.emit(
+        'create_stat',
+        new CreateStatEvent(data.date, data.views, data.clicks, data.cost)
+      );
+    } else {
+      throw new RpcException('Invalid Date format. Please ensure the date is correct and in the format yyyy-MM-dd');
+    }
   }
 
   clearStats() {
