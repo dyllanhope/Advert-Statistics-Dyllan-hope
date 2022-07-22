@@ -4,7 +4,9 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Toolbar from '@mui/material/Toolbar';
+import Link from '@mui/material/Link';
 import RenderStatistics from './components/render-stats';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import { grey } from '@mui/material/colors';
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
         </Toolbar>
       </AppBar>
       <Box
+        alignItems="center"
+        justifyContent="center"
         sx={{
           bgcolor: grey,
           pt: 8,
@@ -35,6 +39,17 @@ function App() {
         >
           A project built by Dyllan Hope
         </Typography>
+        <Box
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Link alignContent='center' href="https://github.com/dyllanhope/Advert-Statistics-Dyllan-hope" target="_blank" >
+            <GitHubIcon />
+          </Link>
+        </Box>
+
       </Box>
     </main>
   );
