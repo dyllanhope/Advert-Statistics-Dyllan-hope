@@ -10,7 +10,6 @@ import ClearButton from './render-clear-button';
 import DatePicker from './render-date-picker';
 import BuildResults from './build-stat-search-results';
 import AddStatModal from './render-add-stat-modal';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 
 export default function RenderStatistics() {
@@ -18,9 +17,6 @@ export default function RenderStatistics() {
     const [startDate, setStartDate] = useState(new Date('1900-01-01'));
     const [endDate, setEndDate] = useState(new Date('2099-12-31'));
     const [showAddModal, setShowAddModal] = useState(false);
-
-
-    const darkTheme = createTheme({ palette: { mode: 'light'} });
 
     const fetchDateRange = async () => {
         if (startDate === null || endDate === null) {
@@ -54,7 +50,6 @@ export default function RenderStatistics() {
 
     return (
         <Container>
-            <ThemeProvider theme={darkTheme}>
                 <AddStatModal refreshData={()=>{fetchDateRange()}} showModal={showAddModal} handleClose={() => { setShowAddModal(false) }} />
 
                 <Grid container spacing={2} alignItems="right">
@@ -88,7 +83,6 @@ export default function RenderStatistics() {
                     </Grid>
                     <BuildResults stats={stats} />
                 </Grid>
-            </ThemeProvider>
         </Container>
     );
 }

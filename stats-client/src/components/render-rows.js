@@ -21,7 +21,7 @@ export default function Row(props) {
 
     return (
         <React.Fragment>
-            <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
+            <TableRow className='transparent' sx={{ '& > *': { borderBottom: 'unset' } }}>
                 <TableCell>
                     <IconButton
                     
@@ -49,7 +49,6 @@ export default function Row(props) {
                                         <TableCell>Views</TableCell>
                                         <TableCell>Clicks</TableCell>
                                         <TableCell>Cost</TableCell>
-
                                         <TableCell align="right">CPC</TableCell>
                                         <TableCell align="right">CPM</TableCell>
                                     </TableRow>

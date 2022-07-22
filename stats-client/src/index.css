@@ -11,6 +11,10 @@ html {
   background-image: linear-gradient(to bottom right, #FFDEE9, #66a6ff);
 }
 
+.transparent{
+  background-color: rgb(231, 230, 230);
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

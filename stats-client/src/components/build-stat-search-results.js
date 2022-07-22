@@ -41,7 +41,7 @@ export default function BuildResults(props) {
                     justifyContent="center"
                 >
                     <TableContainer elevation={3} component={Paper}>
-                        <Table aria-label="collapsible table">
+                        <Table  aria-label="collapsible table">
                             <TableHead>
                                 <TableRow>
                                     <StyledTableCell sx={{background: '#0093E9'}} align='center' colSpan={12}>Form dates</StyledTableCell>
