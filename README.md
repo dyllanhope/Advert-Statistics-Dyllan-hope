@@ -1,7 +1,7 @@
 
-# Advert-Statistics-Dyllan-hope
+# Nova Futur Advert-Statistics-Dyllan-hope
 
-This is the test solution for a coding challenge present by Nova Futur to use React, NestJS and MaterialUI to build a full-stack app.
+This is the test solution for a coding challenge presented by Nova Futur to use React, NestJS and MaterialUI to build a full-stack app.
 
 
 ## Tech Stack
