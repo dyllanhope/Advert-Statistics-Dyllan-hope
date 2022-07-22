@@ -44,7 +44,7 @@ export default function BuildResults(props) {
                         <Table aria-label="collapsible table">
                             <TableHead>
                                 <TableRow>
-                                    <StyledTableCell align='center' colSpan={12}>Form dates</StyledTableCell>
+                                    <StyledTableCell sx={{background: '#0093E9'}} align='center' colSpan={12}>Form dates</StyledTableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>

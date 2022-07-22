@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Container from '@mui/material/Container';
 import { useState, useEffect } from 'react';
-import { StatAPI } from '../api/stats.api';
+import { StatAPI } from '../api/stats.api.ts';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
@@ -20,7 +20,7 @@ export default function RenderStatistics() {
     const [showAddModal, setShowAddModal] = useState(false);
 
 
-    const darkTheme = createTheme({ palette: { mode: 'light' } });
+    const darkTheme = createTheme({ palette: { mode: 'light'} });
 
     const fetchDateRange = async () => {
         if (startDate === null || endDate === null) {

@@ -1,5 +1,7 @@
+import {StatDTO} from './stats.dto';
+
 export class StatAPI {
-    static async getAll() {
+    static async getAll() : Promise<StatDTO> {
         const response = await fetch("http://localhost:3000/statistics", {
             method: "GET"
         });

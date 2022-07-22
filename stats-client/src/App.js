@@ -26,7 +26,7 @@ function App() {
       >
         <RenderStatistics />
       </Box>
-      <Box sx={{ bgcolor: 'background.paper', p: 6 }} component="footer">
+      <Box sx={{ p: 6 }} component="footer">
         <Typography
           variant="subtitle1"
           align="center"

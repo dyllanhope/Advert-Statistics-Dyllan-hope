@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { FormControl, TextField } from '@mui/material';
 import DatePicker from './render-date-picker';
-import { StatAPI } from '../api/stats.api';
+import { StatAPI } from '../api/stats.api.ts';
 import InputAdornment from '@mui/material/InputAdornment';
 
 export default function AddStatModal(props) {
