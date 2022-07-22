@@ -95,20 +95,20 @@ Start the server
 ```
 
 
-## API Reference
+## API References
 
 #### Get all items
+retrieves all statistics saved in memory.
 
 ```http
   GET /statistics
 ```
-retrieves all statistics saved in memory.
 #### Get statistics via date range
+Returns all statistics saved between the start and end dates.
 
 ```http
   GET /statistics/{startDate}/{endDate}
 ```
-Returns all statistics saved between the start and end dates.
 
 | Parameter  | Type      | Description                                      |
 | :--------- | :-------- | :----------------------------------------------- |
@@ -116,11 +116,11 @@ Returns all statistics saved between the start and end dates.
 | `endDate`  | `string`  | **Required**. Date to end the date range with   |
 
 #### Post statistics to save them into Memory
+Saves the following data model into memory.
 
 ```http
   POST /statistics
 ```
-Saves the following data model into memory.
 
 | key        | Type     | Description                                 |
 | :--------- | :------- | :------------------------------------------ |
@@ -129,10 +129,12 @@ Saves the following data model into memory.
 | `clicks`   | `number` | Number of clicks this ad has recieved       |
 | `cost`     | `number` | The total cost of the ad                    |
 
+#### Clear all the statistics in memory
+Clears all statistics saved in memory.
+
 ```http
   POST /statistics/clear
 ```
-Clears all statistics saved in memory.
 
 
 
