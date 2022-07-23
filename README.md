@@ -88,7 +88,7 @@ Install dependencies
   yarn install
 ```
 
-Start the server
+Start the client, it will open a browser tab to the client for you.
 
 ```bash
   yarn start
